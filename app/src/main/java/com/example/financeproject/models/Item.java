@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 public class Item {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
     private String category;

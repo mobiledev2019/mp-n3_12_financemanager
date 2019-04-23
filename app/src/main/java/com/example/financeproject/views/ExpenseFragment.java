@@ -42,9 +42,7 @@ public class ExpenseFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        String[] data = {"Test @@", "Hello, World!", "YOLO"};
-        mAdapter = new ItemAdapter(data);
-        recyclerView.setAdapter(mAdapter);
+        loadItems();
 
         return root;
     }
@@ -53,6 +51,13 @@ public class ExpenseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ExpenseViewModel.class);
+    }
+
+    public void loadItems() {
+        AppDatabase db = AppDatabase.getAppDatabase(getContext());
+        List<Item> items = db.itemDao().getAll();
+        mAdapter = new ItemAdapter(items);
+        recyclerView.setAdapter(mAdapter);
     }
 
 }

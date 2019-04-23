@@ -1,5 +1,6 @@
 package com.example.financeproject;
 
+import android.app.Activity;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -38,11 +39,14 @@ public class AddItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Item item = new Item();
-                item.setAmount(80000);
+                item.setAmount(50000);
                 item.setCategory("Khác");
                 item.setDate(new Date());
                 item.setName("Xem phim");
                 db.itemDao().insert(item);
+
+                setResult(Activity.RESULT_OK);
+                finish();
             }
         });
     }

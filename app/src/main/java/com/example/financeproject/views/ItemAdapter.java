@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.financeproject.R;
+import com.example.financeproject.models.Item;
+
+import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
-    private String[] mDataset;
+    private List<Item> mDataset;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public View layout;
         public TextView textView;
         public MyViewHolder(View v) {
@@ -22,8 +24,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public ItemAdapter(String[] myDataset) {
+    public ItemAdapter(List<Item> myDataset) {
         mDataset = myDataset;
     }
 
@@ -42,12 +43,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
+        holder.textView.setText(mDataset.get(position).getName());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 }
