@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Finance Project</string>
+    <string name="main_activity">Trang chủ</string>
+    <string name="add_item_activity">Thêm mới</string>
+    <string name="tab_text_1">Chi tiêu</string>
+    <string name="tab_text_2">Thu nhập</string>
+    <string name="tab_text_3">Thống kê</string>
+
+    <string name="date_label">Ngày</string>
+    <string name="amount_label">Số tiền</string>
+    <string name="content_label">Nội dung</string>
+    <string name="category_label">Nhóm</string>
+    <string name="add_btn_label">Thêm</string>
+
+    <string-array name="categories_array">
+        <item>Thức ăn</item>
+        <item>Vận chuyển</item>
+        <item>Hộ gia đình</item>
+        <item>Giáo dục</item>
+        <item>Quà tặng</item>
+        <item>Khác</item>
+    </string-array>
+
+</resources>
