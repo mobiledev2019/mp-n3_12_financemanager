@@ -7,33 +7,35 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.financeproject.R;
-import com.example.financeproject.models.Item;
+import com.example.financeproject.models.Expense;
 
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
-    private List<Item> mDataset;
+public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHolder> {
+    private List<Expense> mDataset;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public View layout;
-        public TextView textView;
+        public TextView expenseNameTextView;
+        public TextView expenseAmountTextView;
         public MyViewHolder(View v) {
             super(v);
             layout = v;
-            textView = v.findViewById(R.id.textView);
+            expenseNameTextView = v.findViewById(R.id.name_textview);
+            expenseAmountTextView = v.findViewById(R.id.amount_textview);
         }
     }
 
-    public ItemAdapter(List<Item> myDataset) {
+    public ExpenseAdapter(List<Expense> myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public ItemAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                       int viewType) {
+    public ExpenseAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                          int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_view, parent, false);
+                .inflate(R.layout.expense_item_view, parent, false);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
@@ -43,7 +45,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(mDataset.get(position).getName());
+        holder.expenseNameTextView.setText(mDataset.get(position).getName());
+        holder.expenseAmountTextView.setText(mDataset.get(position).getAmount().toString());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -15,6 +15,7 @@
         android:layout_weight="0">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/content_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/content_label" />
@@ -36,6 +37,7 @@
         android:layout_weight="0">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/amount_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/amount_label" />

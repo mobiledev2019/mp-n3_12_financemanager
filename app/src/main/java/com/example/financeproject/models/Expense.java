@@ -6,15 +6,15 @@ import android.arch.persistence.room.PrimaryKey;
 import java.util.Date;
 
 @Entity
-public class Item {
+public class Expense {
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
     private String category;
-    private double amount;
+    private Double amount;
     private Date date;
 
-    public Item() {}
+    public Expense() {}
 
     public long getId() {
         return id;
@@ -40,11 +40,11 @@ public class Item {
         this.category = category;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

@@ -7,15 +7,15 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.example.financeproject.models.Converters;
-import com.example.financeproject.models.Item;
-import com.example.financeproject.models.ItemDao;
+import com.example.financeproject.models.Expense;
+import com.example.financeproject.models.ExpenseDao;
 
-@Database(entities = {Item.class}, version = 1)
+@Database(entities = {Expense.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
-    public abstract ItemDao itemDao();
+    public abstract ExpenseDao itemDao();
 
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {

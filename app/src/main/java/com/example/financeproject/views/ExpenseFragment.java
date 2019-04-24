@@ -1,6 +1,5 @@
 package com.example.financeproject.views;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,11 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.example.financeproject.AppDatabase;
 import com.example.financeproject.R;
-import com.example.financeproject.models.Item;
+import com.example.financeproject.models.Expense;
 
 import java.util.List;
 
@@ -55,8 +53,8 @@ public class ExpenseFragment extends Fragment {
 
     public void loadItems() {
         AppDatabase db = AppDatabase.getAppDatabase(getContext());
-        List<Item> items = db.itemDao().getAll();
-        mAdapter = new ItemAdapter(items);
+        List<Expense> expenses = db.itemDao().getAll();
+        mAdapter = new ExpenseAdapter(expenses);
         recyclerView.setAdapter(mAdapter);
     }
 

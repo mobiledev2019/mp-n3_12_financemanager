@@ -8,16 +8,16 @@ import android.arch.persistence.room.Query;
 import java.util.List;
 
 @Dao
-public interface ItemDao {
-    @Query("SELECT * FROM item")
-    List<Item> getAll();
+public interface ExpenseDao {
+    @Query("SELECT * FROM Expense")
+    List<Expense> getAll();
 
     @Insert
-    void insertAll(Item... items);
+    void insertAll(Expense... expenses);
 
     @Insert
-    void insert(Item item);
+    void insert(Expense expense);
 
     @Delete
-    void delete(Item item);
+    void delete(Expense expense);
 }
