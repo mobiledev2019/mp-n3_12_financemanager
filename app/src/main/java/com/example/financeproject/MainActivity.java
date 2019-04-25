@@ -3,7 +3,6 @@ package com.example.financeproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -16,6 +15,7 @@ import android.view.View;
 
 import com.example.financeproject.ui.main.SectionsPagerAdapter;
 import com.example.financeproject.views.ExpenseFragment;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.add_expense_btn);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
