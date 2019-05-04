@@ -13,7 +13,7 @@ import com.example.financeproject.models.Expense;
 
 import java.util.Date;
 
-public class AddItemActivity extends AppCompatActivity {
+public class AddExpenseActivity extends AppCompatActivity {
 
     private EditText contentEditText;
     private Spinner categorySpinner;
@@ -22,7 +22,7 @@ public class AddItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_item);
+        setContentView(R.layout.activity_add_expense);
         categorySpinner = findViewById(R.id.spinner);
         Button btn = findViewById(R.id.button);
         contentEditText = findViewById(R.id.content_edittext);
@@ -37,7 +37,7 @@ public class AddItemActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
-        final AppDatabase db = AppDatabase.getAppDatabase(AddItemActivity.this);
+        final AppDatabase db = AppDatabase.getAppDatabase(AddExpenseActivity.this);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +47,7 @@ public class AddItemActivity extends AppCompatActivity {
                 expense.setCategory((String) categorySpinner.getSelectedItem());
                 expense.setDate(new Date());
                 expense.setName(contentEditText.getText().toString());
-                db.itemDao().insert(expense);
+                db.expenseDao().insert(expense);
 
                 setResult(Activity.RESULT_OK);
                 finish();

@@ -9,13 +9,15 @@ import android.content.Context;
 import com.example.financeproject.models.Converters;
 import com.example.financeproject.models.Expense;
 import com.example.financeproject.models.ExpenseDao;
+import com.example.financeproject.models.IncomeDao;
 
 @Database(entities = {Expense.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
-    public abstract ExpenseDao itemDao();
+    public abstract ExpenseDao expenseDao();
+    public abstract IncomeDao incomeDao();
 
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {

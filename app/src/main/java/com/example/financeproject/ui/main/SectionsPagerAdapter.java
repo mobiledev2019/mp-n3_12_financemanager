@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.financeproject.R;
 import com.example.financeproject.views.ExpenseFragment;
+import com.example.financeproject.views.IncomeFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -30,6 +31,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 return ExpenseFragment.newInstance();
+            case 1:
+                return IncomeFragment.newInstance();
             default:
                 return PlaceholderFragment.newInstance(position + 1);
         }

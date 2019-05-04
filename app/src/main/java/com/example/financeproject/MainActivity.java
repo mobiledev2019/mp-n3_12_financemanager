@@ -3,14 +3,10 @@ package com.example.financeproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.financeproject.ui.main.SectionsPagerAdapter;
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+            Intent intent = new Intent(MainActivity.this, AddExpenseActivity.class);
             startActivityForResult(intent, 1);
             }
         });

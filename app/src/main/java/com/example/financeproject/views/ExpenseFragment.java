@@ -25,7 +25,6 @@ public class ExpenseFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-
     public static ExpenseFragment newInstance() {
         return new ExpenseFragment();
     }
@@ -53,7 +52,7 @@ public class ExpenseFragment extends Fragment {
 
     public void loadItems() {
         AppDatabase db = AppDatabase.getAppDatabase(getContext());
-        List<Expense> expenses = db.itemDao().getAll();
+        List<Expense> expenses = db.expenseDao().getAll();
         mAdapter = new ExpenseAdapter(expenses);
         recyclerView.setAdapter(mAdapter);
     }

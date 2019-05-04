@@ -18,11 +18,13 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
         public View layout;
         public TextView expenseNameTextView;
         public TextView expenseAmountTextView;
+        public TextView expenseCategoryTextView;
         public MyViewHolder(View v) {
             super(v);
             layout = v;
             expenseNameTextView = v.findViewById(R.id.name_textview);
             expenseAmountTextView = v.findViewById(R.id.amount_textview);
+            expenseCategoryTextView = v.findViewById(R.id.category_textview);
         }
     }
 
@@ -47,6 +49,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
         // - replace the contents of the view with that element
         holder.expenseNameTextView.setText(mDataset.get(position).getName());
         holder.expenseAmountTextView.setText(mDataset.get(position).getAmount().toString());
+        holder.expenseCategoryTextView.setText(mDataset.get(position).getCategory());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
