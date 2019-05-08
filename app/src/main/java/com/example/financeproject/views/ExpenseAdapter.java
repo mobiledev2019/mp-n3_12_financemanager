@@ -9,6 +9,9 @@ import android.widget.TextView;
 import com.example.financeproject.R;
 import com.example.financeproject.models.Expense;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHolder> {
@@ -18,13 +21,15 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
         public View layout;
         public TextView expenseNameTextView;
         public TextView expenseAmountTextView;
-        public TextView expenseCategoryTextView;
+        public TextView expenseCategoryTextView;;
+        public TextView expenseDateTextView;
         public MyViewHolder(View v) {
             super(v);
             layout = v;
             expenseNameTextView = v.findViewById(R.id.name_textview);
             expenseAmountTextView = v.findViewById(R.id.amount_textview);
             expenseCategoryTextView = v.findViewById(R.id.category_textview);
+            expenseDateTextView = v.findViewById(R.id.date_textview);
         }
     }
 
@@ -48,8 +53,15 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.expenseNameTextView.setText(mDataset.get(position).getName());
-        holder.expenseAmountTextView.setText(mDataset.get(position).getAmount().toString());
+
+        NumberFormat formatter = new DecimalFormat("#,###");
+        String amount = formatter.format(mDataset.get(position).getAmount());
+        holder.expenseAmountTextView.setText(amount);
+
         holder.expenseCategoryTextView.setText(mDataset.get(position).getCategory());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        holder.expenseDateTextView.setText(dateFormat.format(mDataset.get(position).getDate()));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
