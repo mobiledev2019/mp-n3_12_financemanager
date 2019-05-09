@@ -15,6 +15,8 @@ import com.example.financeproject.AppDatabase;
 import com.example.financeproject.R;
 import com.example.financeproject.models.Expense;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ExpenseFragment extends Fragment {
@@ -25,8 +27,12 @@ public class ExpenseFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public static ExpenseFragment newInstance() {
-        return new ExpenseFragment();
+    private Date date;
+
+    public static ExpenseFragment newInstance(Date date) {
+        ExpenseFragment fragment = new ExpenseFragment();
+        fragment.setDate(date);
+        return fragment;
     }
 
     @Override
@@ -39,7 +45,7 @@ public class ExpenseFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        loadItems();
+        loadItems(date);
 
         return root;
     }
@@ -50,11 +56,32 @@ public class ExpenseFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(ExpenseViewModel.class);
     }
 
-    public void loadItems() {
+    public void loadItems(Date date) {
         AppDatabase db = AppDatabase.getAppDatabase(getContext());
-        List<Expense> expenses = db.expenseDao().getAll();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        long firstDay = calendar.getTime().getTime();
+
+        calendar.add(Calendar.MONTH, 1);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.add(Calendar.DATE, -1);
+        long lastDay = calendar.getTime().getTime();
+
+        List<Expense> expenses = db.expenseDao().getAllFromMonth(
+                firstDay,
+                lastDay);
         mAdapter = new ExpenseAdapter(expenses);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
 }

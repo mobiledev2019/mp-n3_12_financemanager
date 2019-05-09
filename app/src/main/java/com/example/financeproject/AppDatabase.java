@@ -12,7 +12,7 @@ import com.example.financeproject.models.ExpenseDao;
 import com.example.financeproject.models.Income;
 import com.example.financeproject.models.IncomeDao;
 
-@Database(entities = {Expense.class, Income.class}, version = 1)
+@Database(entities = {Expense.class, Income.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;

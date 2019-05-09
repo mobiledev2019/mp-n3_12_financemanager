@@ -12,10 +12,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.financeproject.models.Expense;
+import com.example.financeproject.models.Income;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddExpenseActivity extends AppCompatActivity {
 
@@ -23,6 +23,7 @@ public class AddExpenseActivity extends AppCompatActivity {
     private Spinner categorySpinner;
     private EditText amountEditText;
     private EditText dateEditText;
+    private Button btn;
     final Calendar myCalendar = Calendar.getInstance();
 
     @Override
@@ -30,7 +31,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense);
         categorySpinner = findViewById(R.id.spinner);
-        Button btn = findViewById(R.id.button);
+        btn = findViewById(R.id.button);
         contentEditText = findViewById(R.id.content_edittext);
         amountEditText = findViewById(R.id.amount_edittext);
         dateEditText = findViewById(R.id.date_edittext);

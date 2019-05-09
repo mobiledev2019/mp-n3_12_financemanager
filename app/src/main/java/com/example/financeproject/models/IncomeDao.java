@@ -12,6 +12,9 @@ public interface IncomeDao {
     @Query("SELECT * FROM Income")
     List<Income> getAll();
 
+    @Query("SELECT * FROM Income WHERE date > :firstDay AND date < :lastDay")
+    List<Income> getAllFromMonth(long firstDay, long lastDay);
+
     @Insert
     void insertAll(Income... incomes);
 

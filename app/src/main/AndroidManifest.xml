@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddIncomeActivity"></activity>
+        <activity android:name=".AddIncomeActivity" />
         <activity android:name=".AddExpenseActivity" />
         <activity
             android:name=".MainActivity"
