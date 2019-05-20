@@ -15,6 +15,9 @@ public interface ExpenseDao {
     @Query("SELECT * FROM Expense WHERE date > :firstDay AND date < :lastDay")
     List<Expense> getAllFromMonth(long firstDay, long lastDay);
 
+    @Query("SELECT * FROM Expense WHERE category = :category AND date > :firstDay AND date < :lastDay")
+    List<Expense> getAllByCategoryFromMonth(String category, long firstDay, long lastDay);
+
     @Insert
     void insertAll(Expense... expenses);
 

@@ -58,21 +58,23 @@ public class IncomeFragment extends Fragment {
     }
 
     public void loadItems(Date date) {
-        AppDatabase db = AppDatabase.getAppDatabase(getContext());
+        if (date != null) {
+            AppDatabase db = AppDatabase.getAppDatabase(getContext());
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        long firstDay = calendar.getTime().getTime();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            long firstDay = calendar.getTime().getTime();
 
-        calendar.add(Calendar.MONTH, 1);
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        calendar.add(Calendar.DATE, -1);
-        long lastDay = calendar.getTime().getTime();
+            calendar.add(Calendar.MONTH, 1);
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            calendar.add(Calendar.DATE, -1);
+            long lastDay = calendar.getTime().getTime();
 
-        List<Income> incomes = db.incomeDao().getAllFromMonth(firstDay, lastDay);
-        mAdapter = new IncomeAdapter(incomes);
-        recyclerView.setAdapter(mAdapter);
+            List<Income> incomes = db.incomeDao().getAllFromMonth(firstDay, lastDay);
+            mAdapter = new IncomeAdapter(incomes);
+            recyclerView.setAdapter(mAdapter);
+        }
     }
 
     public void setDate(Date date) {

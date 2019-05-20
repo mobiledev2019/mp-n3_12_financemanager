@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.example.financeproject.ui.main.SectionsPagerAdapter;
+import com.example.financeproject.views.ChartFragment;
 import com.example.financeproject.views.ExpenseFragment;
 import com.example.financeproject.views.IncomeFragment;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -80,11 +81,15 @@ public class MainActivity extends AppCompatActivity {
     private void refreshFragments() {
         Fragment expenseFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.view_pager + ":0");
         Fragment incomeFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.view_pager + ":1");
+        Fragment chartFragment = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.view_pager + ":2");
         if (expenseFragment != null) {
             ((ExpenseFragment) expenseFragment).loadItems(myCalendar.getTime());
         }
         if (incomeFragment != null) {
             ((IncomeFragment) incomeFragment).loadItems(myCalendar.getTime());
+        }
+        if (chartFragment != null) {
+            ((ChartFragment) chartFragment).refreshChart(myCalendar.getTime());
         }
     }
 

@@ -39,7 +39,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return IncomeFragment.newInstance(calendar.getTime());
             default:
-                return ChartFragment.newInstance();
+                return ChartFragment.newInstance(calendar.getTime());
         }
     }
 
